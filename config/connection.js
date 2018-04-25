@@ -1,9 +1,10 @@
 var mysql = require('mysql')
 var connection = mysql.createConnection({
   host: 'localhost',
-  user: 'me',
-  password: 'port',
-  database: 'my_db'
+  user: 'root',
+  password: 'root',
+  database: 'burgers_db',
+  port: 8889
 })
 
 module.exports = connection
