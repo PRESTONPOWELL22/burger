@@ -1,23 +1,21 @@
 var express = require('express')
-
-var app = express()
-var PORT = 3000
-
-var exphbs = require('express-handlebars')
 var bodyParser = require('body-parser')
 
+var app = express()
+
+// middleware
+app.use(express.static(process.cwd() + '/public'))
+app.use(bodyParser.urlencoded({extended: false}))
+
+// hbs
+var exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
+var router = require('./controllers/burgers_controller')
+app.use('/', router)
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
-
-
-
-
+var PORT = 3000
 app.listen(PORT, () => {
-    console.log('app listening on port: ' + PORT)
+  console.log('app listening on port: ' + PORT)
 })
-

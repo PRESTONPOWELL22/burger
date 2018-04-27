@@ -8,6 +8,51 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <body>
+    <div class="jumbotron">
+  <h1 class="display-4">Burger App</h1>
+  <p class="lead">This is a burger app, it uses express, mysql, an orm designed by me, handlebars, MVC and more.</p>
+  <hr class="my-4">
+  <h2>Devour Some Burgers</h2>
+</div>
+
+{{!-- handlebars content --}}
     {{{ body }}}
+
+{{!-- burger form --}}
+<form>
+<div class="row">
+<div class="col-md-3"></div>
+  <div action='/burger/create' method='POST' class="form-group col-md-6">
+    <label>Burger Name</label>
+    <input type="text" class="form-control" id="burgerName"><br>
+  <button type="submit" class="btn btn-primary float-right" id='createBurger'>Submit</button>
+  </div>
+</form>
+
+</div>
+
+    <!-- Link in jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    
+    <script type="text/javascript">
+    $('#createBurger').on('click', function(){
+        event.preventDefault()
+        var burgerName = $('#burgerName').val()
+        console.log(burgerName)  //working
+        $.post('/burger/create',  ({burgerName:burgerName})=> {
+            console.log(burgerName)
+        })
+
+        $.ajax({
+            dataType: 'json',
+            url: '/burger/create',
+            data: burgerName,
+            success: 'success'
+        })
+
+        
+    })
+    </script>
+
 </body>
 </html>
