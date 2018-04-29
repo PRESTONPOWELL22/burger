@@ -4,6 +4,8 @@ var orm = {
   selectAll: function () {
     connection.query('SELECT * FROM burgers', (e, r) => {
       if (e) throw e
+      console.log("success")
+      console.log(r)
       return r
     })
   },

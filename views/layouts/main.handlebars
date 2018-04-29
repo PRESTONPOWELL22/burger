@@ -22,7 +22,7 @@
 <form>
 <div class="row">
 <div class="col-md-3"></div>
-  <div action='/burger/create' method='POST' class="form-group col-md-6">
+  <div class="form-group col-md-6">
     <label>Burger Name</label>
     <input type="text" class="form-control" id="burgerName"><br>
   <button type="submit" class="btn btn-primary float-right" id='createBurger'>Submit</button>
@@ -35,21 +35,22 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     
     <script type="text/javascript">
+   
     $('#createBurger').on('click', function(){
         event.preventDefault()
         var burgerName = $('#burgerName').val()
-        console.log(burgerName)  //working
-        $.post('/burger/create',  ({burgerName:burgerName})=> {
-            console.log(burgerName)
-        })
+        var data = {burgerName : burgerName}
+        console.log(data)  //working
 
         $.ajax({
+            method: 'POST',
             dataType: 'json',
             url: '/burger/create',
-            data: burgerName,
-            success: 'success'
+            data: {burgerName: burgerName}
         })
-
+        $.get('/burgers', function(data, status) {
+        console.log(data)
+        })
         
     })
     </script>

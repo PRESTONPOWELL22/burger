@@ -1,6 +1,6 @@
 var orm = require('../config/orm')
 
-var model = {
+var burger = {
   selectAll: (cb) => {
     orm.selectAll((res) => {
       cb(res)
@@ -18,4 +18,4 @@ var model = {
   }
 }
 
-module.exports = model
+module.exports = burger

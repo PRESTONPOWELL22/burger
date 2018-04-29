@@ -5,7 +5,8 @@ var app = express()
 
 // middleware
 app.use(express.static(process.cwd() + '/public'))
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 
 // hbs
 var exphbs = require('express-handlebars')
