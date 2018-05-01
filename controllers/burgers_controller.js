@@ -7,10 +7,11 @@ router.get('/', (req, res) => {
 })
 
 router.get('/burgers', (req, res) => {
+  console.log('got burgers')
   burger.selectAll((data) => {
-    var hbsObj = { burgers: data }
-    console.log(hbsObj)
-    res.render('index', hbsObj)
+    // var hbsObj = { burgers: data }
+    // console.log(hbsObj)
+    res.render('burgers', {layout: false, burgers: data})
   })
 })
 

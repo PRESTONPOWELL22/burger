@@ -1,12 +1,12 @@
 var connection = require('./connection')
 
 var orm = {
-  selectAll: function () {
+  selectAll: function (cb) {
     connection.query('SELECT * FROM burgers', (e, r) => {
       if (e) throw e
       console.log("success")
-      console.log(r)
-      return r
+      
+      cb(r)
     })
   },
   insertOne: function (burgerName) {

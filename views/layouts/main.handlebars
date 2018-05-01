@@ -49,7 +49,7 @@
             data: {burgerName: burgerName}
         })
         $.get('/burgers', function(data, status) {
-        console.log(data)
+        $('#burgers').html(data)
         })
         
     })
